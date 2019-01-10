@@ -41,6 +41,12 @@ module.exports.retrieveVideo = function(videoMap, videoId) {
 // Not sure about this function in particular.
 // In this case, a new video object must be made in order to replace the old one
 module.exports.updateVideo = function(videoMap, videoId, newVideo) {
+    var v = videoMap.get(id);
+    if (!v) {
+        console.log("video does not exist");
+        return;
+    }
+    
     videoMap.set(videoId, newVideo);
 
     // update permanent storage
@@ -49,6 +55,12 @@ module.exports.updateVideo = function(videoMap, videoId, newVideo) {
 
 // Deletes a video from a specificed videoMap given the videoId
 module.exports.deleteVideo = function(videoMap, videoId) {
+    var v = videoMap.get(id);
+    if (!v) {
+        console.log("video does not exist");
+        return;
+    }
+
     // assuming correct videoMap
     videoMap.delete(videoId);
 
