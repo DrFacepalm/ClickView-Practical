@@ -5,11 +5,13 @@ var server = http.createServer((function(request, response) {
 server.listen(8888);
 // Please note i have not dealt with creating, running or working with servers
 // in any way.
-
+// ^ this is just placeholder code to show that a server is supposed to exist...
 
 const fs = require('fs');
 const videos = require('./videos.json');
 const videoMap = new Map();
+const Crud = require('./CRUD_API.js');
+
 
 class Video {
     constructor (
