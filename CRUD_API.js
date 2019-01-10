@@ -27,12 +27,7 @@ module.exports.createVideo = function(videoMap, name, duration, description, dat
     videoMap.set(id, video);
 
     // update permanent storage
-    fs.writeFile('permanentVideo.json', JSON.stringify([...videoMap]), function(err) {
-        if (err) {
-            throw err;
-        }
-        console.log('saved');
-    });
+    writeJSON(videoMap, 'permanentVideo.json');
 }
 
 // Retrieves a video from a specificed videoMap given a videoId
@@ -49,12 +44,7 @@ module.exports.updateVideo = function(videoMap, videoId, newVideo) {
     videoMap.set(videoId, newVideo);
 
     // update permanent storage
-    fs.writeFile('permanentVideo.json', JSON.stringify([...videoMap]), function(err) {
-        if (err) {
-            throw err;
-        }
-        console.log('saved');
-    });
+    writeJSON(videoMap, 'permanentVideo.json');
 }
 
 // Deletes a video from a specificed videoMap given the videoId
@@ -63,12 +53,7 @@ module.exports.deleteVideo = function(videoMap, videoId) {
     videoMap.delete(videoId);
 
     // update permanent storage
-    fs.writeFile('permanentVideo.json', JSON.stringify([...videoMap]), function(err) {
-        if (err) {
-            throw err;
-        }
-        console.log('saved');
-    });
+    writeJSON(videoMap, 'permanentVideo.json');
 }
 
 // fetch videos by folder
@@ -95,4 +80,13 @@ module.exports.searchFolder = function(videoMap, tag) {
         }
     }
     return result;
+}
+
+function writeJSON(videoMap, file) {
+    fs.writeFile(file, JSON.stringify([...videoMap]), function(err) {
+        if (err) {
+            throw err;
+        }
+        console.log('saved');
+    });
 }
