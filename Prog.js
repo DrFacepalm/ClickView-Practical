@@ -1,39 +1,17 @@
 const http = require("http");
 var server = http.createServer((function(request, response) {
-     res.writeHead(200, { 'Content-Type': 'text/plain' });
+     response.writeHead(200, { 'Content-Type': 'text/plain' });
 }));
-server.listen(8888);
+server.listen(8000, 'localhost');
 // Please note i have not dealt with creating, running or working with servers
 // in any way.
 // ^ this is just placeholder code to show that a server is supposed to exist...
 
+const Video = require('./video.js');
 const fs = require('fs');
 const videos = require('./videos.json');
 const videoMap = new Map();
 const Crud = require('./CRUD_API.js');
-
-
-class Video {
-    constructor (
-        name,
-        duration,
-        description,
-        dateCreated,
-        id,
-        thumbnail,
-        folder,
-        tags
-    ) {
-        this.name = name;
-        this.duration = duration;
-        this.dateCreated = dateCreated;
-        this.id = id;
-        this.thumbnail = thumbnail;
-        this.folder = folder;
-        this.tags = tags;
-    }
-
-}
 
 server.on('connect', () => {
     console.log('connected');

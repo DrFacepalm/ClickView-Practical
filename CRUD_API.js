@@ -1,28 +1,5 @@
 const fs = require('fs');
-
-// I know that this is a bad way of getting classes between files, but i don't
-// know how to do it otherwise
-class Video {
-    constructor (
-        name,
-        duration,
-        description,
-        dateCreated,
-        id,
-        thumbnail,
-        folder,
-        tags
-    ) {
-        this.name = name;
-        this.duration = duration;
-        this.dateCreated = dateCreated;
-        this.id = id;
-        this.thumbnail = thumbnail;
-        this.folder = folder;
-        this.tags = tags;
-    }
-
-}
+const Video = require('./video.js');
 
 // Creates video with the paramaters specified, adds it to a videoMap specified
 // and saves any changes to permanentVideo.json
