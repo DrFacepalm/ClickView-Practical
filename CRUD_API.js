@@ -93,3 +93,29 @@ module.exports.deleteVideo = function(videoMap, videoId) {
         console.log('saved');
     });
 }
+
+// fetch videos by folder
+// This will list all the videos under a certain folder
+// e.g. in a search for "history", a video with "folder": "Junior->History"
+// will appear in the search but "Junior->History->China" will not
+module.exports.searchFolder = function(videoMap, folder) {
+    var result = [];
+    for (var [id, video] of videoMap.entries()) {
+        if (video.folder.endsWith(folder)) {
+            list.push(video);
+        }
+    }
+    return result;
+}
+
+// fetch video by tag
+// This will get all the videos with a certain tag.
+module.exports.searchFolder = function(videoMap, tag) {
+    var result = [];
+    for (var [id, video] of videoMap.entries()) {
+        if (video.tags.includes(tag)) {
+            list.push(video);
+        }
+    }
+    return result;
+}
