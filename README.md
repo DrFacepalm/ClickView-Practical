@@ -2,3 +2,8 @@ Unfortunately, I dont believe this code will be 'up and running' any time soon. 
 
 To 'hypothetically' run the server, use the command
 node Prog.js
+
+Files:
+Prog.js -> the main file that wil run and deal with the server
+CRUD_API.js -> The API with all the required methods
+video.js -> the Video class file
