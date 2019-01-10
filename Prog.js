@@ -8,7 +8,7 @@ server.listen(8888);
 
 
 const fs = require('fs');
-const videos = require('videos.json');
+const videos = require('./videos.json');
 const videoMap = new Map();
 
 class Video {
@@ -34,6 +34,7 @@ class Video {
 }
 
 server.on('connect', () => {
+    console.log('connected');
 
     for (vid in videos) {
         var v = videoMap.get(vid.id);
