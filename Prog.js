@@ -3,7 +3,8 @@ var server = http.createServer((function(request, response) {
      res.writeHead(200, { 'Content-Type': 'text/plain' });
 }));
 server.listen(8888);
-// Please note i have not dealt with creating, running or working with servers in any way.
+// Please note i have not dealt with creating, running or working with servers
+// in any way.
 
 
 const fs = require('fs');
@@ -56,35 +57,14 @@ server.on('connect', () => {
         }
     }
 
+    // Now that all videos from videos.json are in the map, JSON.stringify the
+    // Map and put the map into permanent storage
+    fs.writeFile('permanentVideo.json', JSON.stringify([...videoMap]), function(err) {
+        if (err) {
+            throw err;
+        }
+        console.log('saved');
+    });
+
 
 });
-
-function createVideo(name, duration, description, dateCreated, id, thumbnail, folder, tags) {
-    const video = new Video (
-        vid.name,
-        vid.duration,
-        vid.description,
-        vid.dateCreated,
-        vid.id,
-        vid.thumbnail,
-        vid.folder,
-        vid.tags
-    );
-
-    videoMap.set(vid.id, video);
-}
-
-function retrieveVideo(videoId) {
-    var video = videoMap.get(videoId);
-    return video;
-}
-
-// Not sure about this function in particular.
-// In this case, a new video object must be made in order to replace the old one
-function updateVideo(videoId, newVideo) {
-    videoMap.set(videoId, newVideo)
-}
-
-function deleteVideo(videoId) {
-    videoMap.delete(videoId)
-}
